@@ -1,0 +1,213 @@
+//program to check weather the year is leap year or not
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int year=sc.nextInt();
+        if(year%4==0 && year%100!=0 || year%400==0){
+            System.out.println("Leap year");
+        }
+        else{
+            System.out.println("Not a leap year!");
+        }
+    }
+}
+
+
+//create a calculator using switch case
+
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter first number: ");
+        int num1=sc.nextInt();
+        System.out.println("Enter second number: ");
+        int num2=sc.nextInt();
+        System.out.println("1.add 2.subract 3.multiply 4.divide 5.modulus");
+        System.out.println("Choose type of calculation: ");
+        int cal=sc.nextInt();
+        switch(cal){
+            case 1:
+                System.out.println(num1+num2);
+                break;
+            case 2:
+                System.out.println(num1-num2);
+                break;
+            case 3:
+                System.out.println(num1*num2);
+                break;
+            case 4:
+                if(num2!=0){                  
+                    System.out.println(num1/num2);
+                }
+                else{
+                    System.out.println("Error zero is not allowed!");
+                }
+                break;
+            case 5:
+                if(num2!=0){
+                    System.out.println(num1%num2);
+                }
+                else{
+                    System.out.println("Error zero is not allowed!");
+                }
+                break;
+                default:
+                    System.out.println("Please choose between 1-5");
+        }
+    }
+}
+
+
+//to create a pattern "*" as right angle triangle
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number of rows: ");
+        int rows=sc.nextInt();
+        for(int i=1;i<=rows;i++){
+            for(int j=1;j<=i;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+       
+    }   
+}
+
+//pattern of "*" as left angle triangle
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number of rows: ");
+        int rows=sc.nextInt();
+        for(int i=1;i<=rows;i++){
+            for(int j=1;j<=rows-i;j++){
+                System.out.print(" ");
+            }
+            for(int k=1;k<=i;k++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+       
+    }   
+}
+
+//pattern of "*" as diamond
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number of rows: ");
+        int rows=sc.nextInt();
+        for(int i=1;i<=rows;i++){
+            for(int j=1;j<=rows-i;j++){
+                System.out.print(" ");
+            }
+            for(int k=1;k<=2*i-1;k++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        for(int i=rows-1;i>=1;i--){
+            for(int j=1;j<=rows-i;j++){
+                System.out.print(" ");
+            }
+            for(int k=1;k<=2*i-1;k++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+       
+    }   
+}
+
+//butterfly pattern with "*"
+
+
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number of rows: ");
+        int rows=sc.nextInt();
+        for(int i=1;i<=rows;i++){
+            for(int j=1;j<=i;j++){
+                System.out.print("*");
+            }
+            for(int j=1;j<=2*(rows-i);j++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=i;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        for(int i=rows-1;i>=1;i--){
+            for(int j=1;j<=i;j++){
+                System.out.print("*");
+            }
+            for(int j=1;j<=2*(rows-i);j++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=i;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+       
+    }   
+}
+
+
+//Hollow diamond with "*"
+  
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number of rows: ");
+        int rows=sc.nextInt();
+        for(int i=1;i<=rows;i++){
+            for(int j=1;j<=rows-i;j++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=2*i-1;j++){
+                if(j==1 || j==2*i-1){
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+             
+            System.out.println();
+        }
+        for(int i=rows-1;i>=1;i--){
+            for(int j=1;j<=rows-i;j++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=2*i-1;j++){
+                if(j==1||j==2*i-1){
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+       
+    }   
+}
+
+
