@@ -26,7 +26,7 @@ class Main {
         int num1=sc.nextInt();
         System.out.println("Enter second number: ");
         int num2=sc.nextInt();
-        System.out.println("1.add 2.subract 3.multiply 4.divide 5.modulus");
+        System.out.println("1.add 2.subtract 3.multiply 4.divide 5.modulus");
         System.out.println("Choose type of calculation: ");
         int cal=sc.nextInt();
         switch(cal){
@@ -210,4 +210,117 @@ class Main {
     }   
 }
 
+//palindrome number (leet code-9)
 
+class Solution {
+    public boolean isPalindrome(int x) {
+        int n=x;
+        int newnum=0;
+        while(x>0){
+            int rem=x%10;
+            newnum=newnum*10+rem;
+            x/=10;
+        }
+        if(newnum==n){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+}
+
+
+//Roman to integer (leet code-13)
+class Solution {
+    public int romanToInt(String s) {
+        int ans=0;
+        int num=0;
+        for(int i=s.length()-1;i>=0;i--){
+            switch(s.charAt(i)){
+                case 'I':
+                    num=1;
+                    break;
+                case 'V':
+                    num=5;
+                    break;
+                case 'X':
+                    num=10;
+                    break;
+                case 'L':
+                    num=50;
+                    break;
+                case 'C':
+                    num=100;
+                    break;
+                case 'D':
+                    num=500;
+                    break;
+                case 'M':
+                    num=1000;
+                    break;
+            }
+            if(4*num<ans){    //subtraction rule
+                ans=ans-num;
+            }
+            else{
+                ans=ans+num;
+            }
+            
+        }
+        return ans;
+    }
+}
+
+
+//factorial trailing zeroes(leetcode-172)
+
+class Solution {
+    public int trailingZeroes(int n) {
+        int c=0;
+        while(n>0){
+            n/=5;
+            c+=n;
+        }
+        return c;
+        
+    }
+}
+
+//number of 1 bits (leet code-191)
+class Solution {
+    public int hammingWeight(int n) {
+        int count=0;
+        while(n!=0){
+            n=n & (n-1);
+            count++;
+        }
+        return count;
+    }
+}
+
+//add digits(leet code -258)
+class Solution {
+    public int addDigits(int num) {
+        if(num==0){
+            return 0;
+        }
+        return (num % 9==0)?9:num%9;
+    }
+}
+
+
+//reverse integer(leet code -7)
+class Solution {
+    public int reverse(int x) {
+        long ans= 0;
+
+        while (x != 0){
+            ans = ans * 10 + x % 10;
+            x /= 10;
+
+        }
+        return (ans< Integer.MIN_VALUE|| ans> Integer.MAX_VALUE) ? 0 : (int) ans;
+    }
+}
