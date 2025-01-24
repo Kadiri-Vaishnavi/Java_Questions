@@ -1,0 +1,118 @@
+ //find the largest element in an array
+ 
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        int highest=0;
+        for(int i=0;i<size;i++){
+            if(arr[i]>highest){
+                highest=arr[i];
+            }
+        }
+        System.out.println(highest);
+    }   
+}
+
+
+//find the second largest element
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int size = sc.nextInt();
+        if (size < 2) {
+            System.out.println("Array must have at least two elements.");
+            return;
+        }
+        int[] arr = new int[size];
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+        Arrays.sort(arr);
+      
+        int secondlargest = arr[size - 2];
+        for (int i = size - 2; i >= 0; i--) {
+            if (arr[i] > secondlargest) {
+                secondlargest = arr[i];
+                break;
+            }
+        }
+        System.out.println(secondlargest);
+
+    }
+}
+
+
+//find the duplicate element
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the size of the array: ");
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        boolean foundduplicate=false;
+        for(int i=1;i<size;i++){
+            if(arr[i]==arr[i-1]){
+                System.out.println(arr[i]);
+                foundduplicate=true;
+                break;
+            }
+        }
+        if(!foundduplicate){
+            System.out.println("duplicate not found!!");
+        }
+
+    }
+}
+
+
+//check weather the array is sorted or not
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the size of the array: ");
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        boolean issorted=isArraysorted(arr);
+        
+        if(issorted){
+            System.out.println("Is sorted");
+        }
+        else{
+            System.out.println("Not sorted");
+        }
+    }
+        public static boolean isArraysorted(int[] arr){
+            for(int i=0;i<arr.length-1;i++){
+            if(arr[i]>arr[i+1]){
+                return false;
+            }
+        }
+        return true;   
+    }
+}
