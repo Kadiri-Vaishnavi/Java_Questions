@@ -192,4 +192,45 @@ public class Main{
 }
 
 
+//interface
+
+interface appliance{
+    public void turnon();
+    public void turnoff();
+}
+
+class fan implements appliance{
+    @Override
+    public void turnon(){
+        System.out.println("yes!");
+    }
+    @Override
+    public void turnoff(){
+        System.out.println("no");
+    }
+}
+
+class light implements appliance{
+    @Override
+    public void turnon(){
+        System.out.println("no!");
+    }
+    @Override
+    public void turnoff(){
+        System.out.println("Yes");
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        appliance fan=new fan();
+        appliance light=new light();
+        fan.turnon();
+        fan.turnoff();
+        light.turnon();
+        light.turnoff();
+    }
+}
+
+
 
