@@ -1,0 +1,195 @@
+//Person class with getter and setter
+class Person {
+    private String name;
+    private int age;
+    public String getName() {
+        return name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+        public int getAge() {
+        return age;
+    }
+
+
+    public void setAge(int age) {
+        if (age >= 0) {
+            this.age = age;
+        } else {
+            System.out.println("Age cannot be negative.");
+        }
+    }
+
+    public void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person();
+        person.setName("John Doe");
+        person.setAge(25);
+        person.displayDetails();
+    }
+}
+
+
+//bank account with deposit and withdrawals methods
+class BankAccount {
+    private String accountNumber;
+    private double balance;
+
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("$" + amount + " deposited. Current balance: $" + balance);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("$" + amount + " withdrawn. Current balance: $" + balance);
+        } else {
+            System.out.println("Insufficient balance or invalid amount.");
+        }
+    }
+
+ 
+    public void displayDetails() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: $" + balance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("123456789", 5000);
+        account.displayDetails();
+        account.deposit(2000);
+        account.withdraw(1500);
+        account.withdraw(6000); 
+    }
+}
+
+
+//encapsulation with multiple class
+
+import java.util.ArrayList;
+
+class Student {
+    private int rollNumber;
+    private String name;
+    private double marks;
+
+    
+    public Student(int rollNumber, String name, double marks) {
+        this.rollNumber = rollNumber;
+        this.name = name;
+        this.marks = marks;
+    }
+
+    
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getMarks() {
+        return marks;
+    }
+
+    public void setMarks(double marks) {
+        this.marks = marks;
+    }
+}
+
+class School {
+    private ArrayList<Student> students = new ArrayList<>();
+
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+   
+    public void displayStudents() {
+        for (Student student : students) {
+            System.out.println("Roll Number: " + student.getRollNumber());
+            System.out.println("Name: " + student.getName());
+            System.out.println("Marks: " + student.getMarks());
+            System.out.println();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        School school = new School();
+
+        
+        school.addStudent(new Student(1, "Alice", 85.5));
+        school.addStudent(new Student(2, "Bob", 78.0));
+        school.addStudent(new Student(3, "Charlie", 92.0));
+
+        
+        school.displayStudents();
+    }
+}
+
+//create an abstract class shape with: a concrete method display() to print"this is a shape." an abstract class method calculationArea();
+
+import java.util.ArrayList;
+
+abstract class shape{
+    void display(){
+        System.out.println("This is a shape.");
+    }
+    abstract void calculateArea();
+}
+
+class circle extends shape{
+    @Override
+    void calculateArea(){
+        System.out.println("area of circle: pie*R*R");
+    }
+}
+
+class rectangle extends shape{
+    @Override
+    void calculateArea(){
+        System.out.println("area of rectangle: l*b");
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        shape cir=new circle();
+        shape rec=new rectangle();
+        cir.display();
+        cir.calculateArea();
+        rec.display();
+        rec.calculateArea();
+    }
+}
+
+
+
