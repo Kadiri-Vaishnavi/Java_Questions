@@ -1,0 +1,151 @@
+//create arraylist and retrieve the second element
+
+import java.util.ArrayList;
+class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers=new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        System.out.println(numbers.get(1));
+    }
+}
+
+
+//replace
+
+import java.util.ArrayList;
+class Main {
+    public static void main(String[] args) {
+        ArrayList<String> color=new ArrayList<>();
+        color.add("Red");
+        color.add("Blue");
+        color.add("Green");
+        color.set(1,"Yellow");
+        System.out.println(color);
+    }
+}
+
+//create a linkedlist and print 1st element
+
+import java.util.LinkedList;
+class Main {
+    public static void main(String[] args) {
+        LinkedList<String> days=new LinkedList<>();
+        days.add("Monday");
+        days.add("tuesday");
+        days.add("wednesday");
+        System.out.println(days.get(0));
+    }
+}
+
+//remove second element
+
+import java.util.LinkedList;
+class Main {
+    public static void main(String[] args) {
+        LinkedList<Integer> numbers=new LinkedList<>();
+        numbers.add(5);
+        numbers.add(10);
+        numbers.add(15);
+        numbers.remove(1);
+        System.out.println(numbers);
+    }
+}
+
+//add three at 3rd position
+
+import java.util.LinkedList;
+class Main {
+    public static void main(String[] args) {
+        LinkedList<String> num=new LinkedList<>();
+        num.add("ONE");
+        num.add("TWO");
+        num.add("FOUR");
+        num.add(2,"THREE");
+        System.out.println(num);
+    }
+}
+
+//HashSet 
+
+import java.util.HashSet;
+class Main {
+    public static void main(String[] args) {
+        HashSet<Integer> num=new HashSet<>();
+        num.add(1);
+        num.add(2);
+        num.add(3);
+        System.out.println(num);
+    }
+}
+
+//duplicate 
+
+import java.util.HashSet;
+class Main {
+    public static void main(String[] args) {
+        HashSet<Integer> num=new HashSet<>();
+        num.add(1);
+        num.add(2);
+        num.add(2); //duplicate won't be added
+        System.out.println(num);
+    }
+}
+
+//check that element exists or not
+
+import java.util.HashSet;
+
+class Main {
+    public static void main(String[] args) {
+        HashSet<String> animals = new HashSet<>();
+        animals.add("Dog");
+        animals.add("Cat");
+        animals.add("Bird");
+
+        if (animals.contains("Cat")) {
+            System.out.println("exists");
+        } else {
+            System.out.println("does not exist");
+        }
+    }
+}
+
+//linkedhashset
+
+import java.util.LinkedHashSet;
+
+class Main {
+    public static void main(String[] args) {
+        LinkedHashSet<String> names = new LinkedHashSet<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+        names.add("Alice"); //duplicate 
+
+        System.out.println(names);
+    }
+}
+
+//exists or not
+
+
+import java.util.LinkedHashSet;
+
+class Main {
+    public static void main(String[] args) {
+        LinkedHashSet<String> names = new LinkedHashSet<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+        
+       if (names.contains("Bob")) {
+            System.out.println("exists");
+        } else {
+            System.out.println("does not exist");
+        }
+    }
+}
