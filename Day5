@@ -1,0 +1,230 @@
+//TreeSet
+
+import java.util.TreeSet;
+class Main {
+    public static void main(String[] args) {
+        TreeSet<Integer> numbers=new TreeSet<>();
+        numbers.add(50);
+        numbers.add(20);
+        numbers.add(40); //will  be sorted
+        System.out.println(numbers);
+    }
+}
+
+//to print first and last element
+
+import java.util.TreeSet;
+class Main {
+    public static void main(String[] args) {
+        TreeSet<String> words=new TreeSet<>();
+        words.add("Zerbra");
+        words.add("Apple");
+        words.add("Mango"); 
+        System.out.println(words.first());
+        System.out.println(words.last());
+    }
+}
+
+
+//remove the first element
+
+import java.util.TreeSet;
+class Main {
+    public static void main(String[] args) {
+        TreeSet<String> words=new TreeSet<>();
+        words.add("Zerbra");
+        words.add("Apple");
+        words.add("Mango");
+        words.remove(words.first());
+        System.out.println(words);    
+    }
+}
+
+
+
+
+//remove the all element
+
+import java.util.LinkedList;
+import java.util.Queue;
+class Main {
+    public static void main(String[] args) {
+        Queue<String> words=new LinkedList<>();
+        words.add("Zerbra");
+        words.add("Apple");
+        words.add("Mango");
+        //words.offer("Mango"); also works with queue
+        System.out.println(words);
+        //prints the head of the queue
+        System.out.println("Head:"+ words.peek());
+        
+        while (!words.isEmpty()){
+            System.out.println("Removed: "+words.poll());
+        }
+        System.out.println("Is queue empty? "+words.isEmpty());
+    }
+}
+
+
+//remove the first element
+
+import java.util.LinkedList;
+import java.util.Queue;
+class Main {
+    public static void main(String[] args) {
+        Queue<Integer> number=new LinkedList<>();
+        number.add(10);
+        number.add(20);
+        number.add(30);
+        
+        System.out.println("Removed: "+number.poll());
+        System.out.println(number);
+
+    }
+}
+
+//priority queue
+
+//remove the first element
+import java.util.PriorityQueue;
+class Main {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq=new PriorityQueue<>();
+        pq.add(10);
+        pq.add(20);
+        pq.add(30);
+        //pq.offer(20);
+        
+        System.out.println(pq);
+        //removing elements based on the priority
+        while(!pq.isEmpty()){
+            System.out.println("Processing: "+pq.poll());
+        }
+        System.out.println(pq);
+    }
+}
+
+
+//create a priority queue of integers 30,10,20 use poll() to retrieve and print the smallest element 
+
+import java.util.PriorityQueue;
+class Main {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq=new PriorityQueue<>();
+        pq.add(30);
+        pq.add(10);
+        pq.add(20);
+        //pq.offer(20);
+        System.out.println(pq);
+        System.out.println("Processing: "+pq.poll());
+        System.out.println(pq);
+    }
+}
+
+
+//use peek()to see the head of the queue
+import java.util.PriorityQueue;
+class Main {
+    public static void main(String[] args) {
+        PriorityQueue<String> pq=new PriorityQueue<>();
+        pq.add("Banana");
+        pq.add("Apple");
+        pq.add("Cherry");
+        //pq.offer(20);
+        System.out.println(pq);
+        System.out.println("head: "+pq.peek()); 
+      
+    }
+}
+
+
+//use for loop to print all elements
+
+import java.util.PriorityQueue;
+class Main {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq=new PriorityQueue<>();
+        pq.add(1);
+        pq.add(6);
+        pq.add(3);
+        
+        for(int i:pq){
+            System.out.println(i);
+        }
+        
+    }
+}
+
+
+//Deque
+
+import java.util.Deque;
+import java.util.LinkedList;
+class Main {
+    public static void main(String[] args) {
+        Deque<Integer> dq= new LinkedList<>();
+        dq.addLast(1);
+        dq.addFirst(6);
+        dq.addLast(3);
+        
+        System.out.println(dq);
+        System.out.println(dq.removeFirst());
+        
+    }
+}
+
+//remove first and last
+
+import java.util.Deque;
+import java.util.LinkedList;
+class Main {
+    public static void main(String[] args) {
+        Deque<String> dq= new LinkedList<>();
+        dq.addFirst("First");
+        dq.addLast("Last");
+        
+        System.out.println(dq.removeLast());
+        System.out.println(dq.removeFirst());
+        System.out.println(dq);
+        
+    }
+}
+
+
+//HashMap
+import java.util.HashMap;
+
+class Main {
+    public static void main(String[] args) {
+        HashMap<Integer,String> map= new HashMap<>();
+        map.put(1,"Alice");
+        map.put(2,"Bob");
+        map.put(3,"Charlie");
+        
+        System.out.println("Value for key 2: "+map.get(2));
+        
+        for(Integer key:map.keySet()){
+            System.out.println("key: "+key+" Value: "+map.get(key));
+        }
+        map.remove(2);
+        System.out.println("map after removing key 2: "+map);
+        
+    }
+}
+
+
+//linkedHash Map
+
+import java.util.LinkedHashMap;
+
+class Main {
+    public static void main(String[] args) {
+        LinkedHashMap<String ,Double> fruits= new LinkedHashMap<>();
+        fruits.put("Apple",1.99);
+        fruits.put("Orange",0.99);
+        fruits.put("Cherry",7.02);
+        
+        System.out.println(fruits);
+          
+    }
+}
