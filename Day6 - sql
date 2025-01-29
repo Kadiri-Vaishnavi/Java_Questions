@@ -1,0 +1,25 @@
+use java;
+
+create table customers (
+		customer_id int primary key,
+        c_name varchar(100),
+        email varchar(150),
+        age int check(age >0),
+        city varchar(50),
+        signup_date date
+        );
+
+insert into customers
+values (101,"Arjun","arjun123@gmail.com",29,"chennai",'14/01/23'),
+(102,"Arun","arun123@gmail.com",25,"banglore",'13/02/23'),
+(103,"Ram","ram123@gmail.com",30,"delhi",'24/04/24'),
+(104,"Sam","sam123@gmail.com",32,"nellore",'12/02/22'),
+(105,"Tarun","tarun123@gmail.com",23,"mumbai",'01/01/23');
+
+select * from customers;
+
+select c_name from customers where city='delhi';
+select c_name from customers where age >25;
+select c_name from customers where signup_date >'2023-01-01';
+select * from customers where email like '%gmail.com';
+select c_name from customers where city='mumbai' or city='banglore';
