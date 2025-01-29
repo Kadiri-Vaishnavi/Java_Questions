@@ -1,0 +1,36 @@
+//annotations
+
+import java.util.*;
+class OldClass{
+    @Deprecated  //marking this method outdated
+    void oldMethod(){
+        System.out.println("this is deprecated.use newmethod() instead.");
+    }
+    void newMethod(){
+        System.out.println("this is the new and recommended method.");
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        OldClass obj=new OldClass();
+        obj.oldMethod(); //compiler will give a warning
+        obj.newMethod();  //no warning
+    }
+}
+
+//enum 
+import java.util.*;
+enum Day{
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+}
+public class Main{
+    public static void main(String[] args){
+        Day today=Day.MONDAY;
+        System.out.println("Today is: "+today);
+        if(today==Day.MONDAY){
+            System.out.println("Start of the week!");
+        }
+        
+    }
+}
