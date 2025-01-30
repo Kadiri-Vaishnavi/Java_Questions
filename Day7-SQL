@@ -1,0 +1,101 @@
+use java;
+
+create table student (
+	id int primary key,
+    s_name varchar(30),
+    age int ,
+    grade varchar(30)
+);
+
+insert into student
+values(1,"Ram",19,"A"),
+(2,"Jain",20,"B+"),
+(3,"Zara",16,"D"),
+(4,"John Doe",21,"A"),
+(5,"Cari",20,"C");
+
+select s_name from student where age >18;
+update student set grade ='A+' where s_name ='John Doe';
+delete from student where id=3;
+
+select * from student order by grade; //sorting
+
+select count(*) from student;
+select avg(age) from student;
+select max(grade),min(grade) from student;
+
+select grade,count(*) from student group by grade;
+select * from student where age < (select avg(age) from student);
+
+create index idx_name on student(s_name);
+select * from student;
+
+//joins
+
+use java;
+create table Courses (
+	course_id int ,
+    course_name varchar(50),
+    student_id int,
+    foreign key (student_id) references student(id)
+    );
+insert into Courses
+values(1,'CSE',1),
+(2,'BBA',2),
+(3,'MCA',4),
+(4,'ECE',5);
+
+SELECT student.s_name,Courses.course_name from student inner join Courses on student.id=Courses.student_id;
+
+SELECT student.s_name,Courses.course_name from student left join Courses on student.id=Courses.student_id;
+
+select course_name from Courses where student_id is null;
+
+
+//task 2
+
+
+create table books(
+	book_id int primary key,
+    title varchar(80) not null,
+    isbn int unique ,
+    published_year int check(published_year>2000),
+    b_status varchar(30) default 'Available'
+    );
+    
+insert into books
+values(101,'Harry',123,2012,'available');
+
+
+create table Members(
+	member_id int primary key,
+    m_name varchar(30) not null,
+    email varchar(50) unique,
+    age int check(age>=12)
+);
+
+insert into Members
+values(1,'Roshan','roshan123@gmail.com',18);
+
+create table Borrowed_books(
+	borrow_id int primary key,
+    book_id int,
+    member_id int,
+    borrow_date date not null,
+    return_date date default NULL,
+    foreign key (book_id) references books(book_id),
+    foreign key (member_id) references Members(member_id)
+    );
+    
+insert into books
+values(102,'Money',179,1999,'available'); //year error
+
+insert into Members
+values(2,'Rohan','rohan123@gmail.com',11); //age error
+
+insert into Borrowed_books
+values(100,101,1,'2018-12-02',null);
+
+insert into Members
+values(2,'Rohan','roshan123@gmail.com',19); //duplicate entry error
+
