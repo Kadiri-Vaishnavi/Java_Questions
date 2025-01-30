@@ -99,3 +99,38 @@ values(100,101,1,'2018-12-02',null);
 insert into Members
 values(2,'Rohan','roshan123@gmail.com',19); //duplicate entry error
 
+//views
+create view StudentCoursesView as select s_name,age,course_name from student,Courses;
+select * from StudentCoursesView;
+drop view StudentCoursesView;
+
+//create procedure
+
+
+DELIMITER $$
+
+CREATE PROCEDURE GetStudentByCourse()
+BEGIN
+    SELECT course_name, COUNT(*) AS student_count 
+    FROM Courses 
+    GROUP BY course_name;
+END $$
+
+DELIMITER ;
+
+
+call GetStudentByCourse();
+
+
+//procedure
+DELIMITER $$
+
+CREATE PROCEDURE UpdateStudentAge()
+BEGIN
+    update student set age=20 where id=1;
+END $$
+
+DELIMITER ;
+
+select * from student;
+call UpdateStudentAge();
