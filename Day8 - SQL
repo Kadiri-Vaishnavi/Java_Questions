@@ -3,57 +3,34 @@
 //CTE -- common table expression :temporary named result set 
 
 use java;
-create table students(
-	id int primary key,
-	s_name varchar(40) not null,
-    GPA int not null
-    );
+-- Creating the Students table
+CREATE TABLE s_student (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    age INT CHECK (age >= 17),  
+    gpa DECIMAL(3,2) DEFAULT 0.00,
+    status ENUM('Active', 'Graduated') DEFAULT 'Active'
+);
 
-create table courses(
-	course_name varchar(50),
-    course_id int,
-    student_id int,
-    foreign key (student_id) references students(id)
-    );
+-- Creating the Courses table
+CREATE TABLE c_courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(100) UNIQUE NOT NULL
+);
+
+-- Creating the Enrollments table (Bridge Table)
+CREATE TABLE e_enrollments (
+    enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    course_id INT,
+    enrollment_date DATE DEFAULT current_timestamp,
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE,
+    UNIQUE(student_id, course_id) -- Ensures a student cannot enroll in the same course twice
+);
     
-create table enrollment(
-	e_status varchar(40),
-    c_id int ,
-    s_id int,
-    foreign key (c_id) references courses(course_id),
-    foreign key (s_id) references students(id)
-    );
-    
-insert into students
-values (1,'ram',6.7),
-(2,'hari',7),
-(3,'Tom',5.6),
-(4,'aman',6.9);
 
-insert into courses
-values ('BBA', 101, 1),
-('CSE',101,2),
-('ECE',102,4),
-('MEC',103,3);
 
-insert into enrollment
-values('active',101,1),
-('pass out',103,3),
-('active',102,4);
-    
-DELIMITER $$
 
-CREATE TRIGGER update_student_status
-AFTER UPDATE ON students
-FOR EACH ROW
-BEGIN
-    IF NEW.GPA >= 3.5 THEN
-        UPDATE enrollment 
-        SET e_status = 'active' 
-        WHERE s_id = NEW.id;
-    END IF;
-END $$
-
-DELIMITER ;
 
 
