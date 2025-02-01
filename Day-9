@@ -1,0 +1,4 @@
+//maven is a powerful management tool(which makes the whole process easy) works with pom(project object model)-- stores the meta data of the project
+all jar files are loaded on demand
+jar file : combains many files into one zip file
+
