@@ -1,0 +1,250 @@
+DSA : is a way of organizing and storing data
+
+array, linked list : linear formats
+stacks, queus : specific rules (LIFO. FIFO) 
+trees, graphs : hierarchical and networked
+
+types of ds:
+
+linear :
+array
+linkedlist
+stack
+queue
+
+non-linear:
+trees
+graphs
+hash tables
+
+arrays:
+
+//define an array and print the sum of the elements of the array
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};
+        int sum=0;
+        for(int i=0;i<arr.length;i++){
+            sum=sum+arr[i];
+        }
+        System.out.println(sum);
+    }
+}
+
+
+//print the largest element of a array
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};
+        int largest=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>largest){
+                largest=arr[i];
+            }
+            
+        }
+        System.out.println(largest);
+    }
+}
+
+
+//reverse the elements of an array
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};
+       
+        for(int i=arr.length-1;i>=0;i--){
+            System.out.print(arr[i]+" ");
+            
+        }
+       
+    }
+}
+
+//sorting an array
+
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,5,4};
+        
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+       
+       
+    }
+}
+
+
+Linked list:
+
+node contains data and the pointer of next node
+single
+double
+circular
+
+//Create new linkedList where you can insert a new node at the beginning and print the list...
+import java.util.*;
+
+class Node{
+    int data;
+    Node next;
+    
+    public Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+
+class LinkedList{
+    Node head;
+    public void insertAtBeginning(int data){
+        Node newNode=new Node(data);
+        newNode.next=head;
+        head=newNode;
+    }
+    public void printlist(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        LinkedList list=new LinkedList();
+        list.insertAtBeginning(10);
+        list.insertAtBeginning(20);
+        list.insertAtBeginning(30);
+        list.printlist();
+    } 
+}
+
+//insert at the end
+import java.util.*;
+
+class Node{
+    int data;
+    Node next;
+    
+    public Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+
+class LinkedList{
+    Node head;
+    public void insertAtEnd(int data){
+        Node newNode=new Node(data);
+        if(head == null){
+            head=newNode;
+            return;
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=newNode;
+    }
+    public void printlist(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        LinkedList list=new LinkedList();
+        list.insertAtEnd(10);
+        list.insertAtEnd(20);
+        list.insertAtEnd(30);
+        list.printlist();
+    } 
+}
+
+
+//deletion from the end
+
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    // Insert a new node at the beginning
+    public void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+    
+    // Insert a new node at the end
+    public void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = newNode;
+    }
+
+    // Delete a node from the end
+    public void deleteFromEnd() {
+        if (head == null) {
+            return; // List is empty
+        }
+        if (head.next == null) {
+            head = null; // Only one element
+            return;
+        }
+        Node temp = head;
+        while (temp.next.next != null) {
+            temp = temp.next;
+        }
+        temp.next = null;
+    }
+
+    // Print the linked list
+    public void printList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.insertAtBeginning(10);
+        list.insertAtBeginning(20);
+        list.insertAtBeginning(30);
+        list.insertAtEnd(40);
+        list.insertAtEnd(50);
+        list.printList();  
+        
+        list.deleteFromEnd();
+        list.printList(); 
+    }
+}
