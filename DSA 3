@@ -1,0 +1,104 @@
+//arraylist
+
+class MyArrayList {
+    private Object[] data;
+    private int size;
+
+    public MyArrayList(int initialCapacity) {
+        data = new Object[initialCapacity];
+        size = 0;
+    }
+
+    public MyArrayList() {
+        this(10);
+    }
+
+    public void add(Object element) {
+        if (size == data.length) {
+            resize();
+        }
+        data[size++] = element;
+    }
+
+    private void resize() {
+        Object[] newData = new Object[data.length * 2];
+        System.arraycopy(data, 0, newData, 0, data.length);
+        data = newData;
+    }
+
+    public Object get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        return data[index];
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        for (int i = index; i < size - 1; i++) {
+            data[i] = data[i + 1];
+        }
+        data[size - 1] = null; 
+        size--;
+    }
+    public void insert(int index,Object element){
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        if(size==data.length){
+            resize();
+        }
+        for(int i=size;i>index;i--){
+            data[i]=element;
+        }
+    }
+    
+    public boolean check(Object element){
+        for(int i=0;i<size;i++){
+            if(data[i]==element){
+                return true;
+            }
+        }
+        return false;
+    }
+    public int findIndex(Object element){
+        for(int i=0;i<size;i++){
+            if(data[i].equals(element)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < size; i++) {
+            sb.append(data[i]);
+            if (i < size - 1) sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyArrayList list = new MyArrayList();
+
+        list.add(10);
+        list.add("Hello");
+        list.add(2);
+
+        System.out.println("List: " + list); 
+    }
+}
+
+//convert array into array list
+
