@@ -341,3 +341,34 @@ class Main {
     }
 }
 
+
+// hashing
+
+class Main {
+    public static void main(String[] args) {
+        String key="apple";
+        int hashCode=key.hashCode();
+        int index=Math.abs(hashCode)%10;
+        System.out.println("Hash Code: "+hashCode);
+        System.out.println("Index in table: "+index);
+    }
+}
+
+
+// hashing
+import java.util.HashMap;
+
+class Main {
+    public static void main(String[] args) {
+        HashMap<String, Integer> map = new HashMap<>();
+        
+        map.put("apple",100);
+        map.put("banana",50);
+        map.put("mango",80);
+        System.out.println("Price of Apple: "+map.get("Apple"));
+        System.out.println("HashCode of 'apple': "+"apple".hashCode());
+        System.out.println("HashCode of 'Banana': "+"Banana".hashCode());
+        System.out.println("HashCode of 'mango': "+"mango".hashCode());
+        
+    }
+}
