@@ -1,0 +1,343 @@
+//stop unncessary iterations
+
+import java.util.*;
+class BubbleSort{
+    public static void bubbleSort(int arr[]){
+        boolean sort;
+        int n=arr.length;
+        for(int i=0;i<n-1;i++){
+            sort=false;
+            for(int j=0;j<n-i-1;j++){
+                if(arr[j]>arr[j+1]){
+                    int temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                    sort=true;
+                }
+            }
+            System.out.println("pass " + (i+1));
+            if(!sort){
+                break;
+            }
+        }
+    }
+}
+
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        BubbleSort.bubbleSort(arr);
+        
+        for(int i=0;i<size;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+//iterate alternatively like sort the smallest one first and largest one next and so on
+
+import java.util.*;
+
+class SelectionSort {
+    public static void dualSelectionSort(int arr[]) {
+        int n = arr.length;
+
+        for (int i = 0; i < n / 2; i++) { 
+            int minIndex = i;
+            int maxIndex = i;
+
+            for (int j = i; j < n - i; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+                if (arr[j] > arr[maxIndex]) {
+                    maxIndex = j;
+                }
+            }
+
+            
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+
+            if (maxIndex == i) {
+                maxIndex = minIndex;
+            }
+
+            
+            temp = arr[maxIndex];
+            arr[maxIndex] = arr[n - i - 1];
+            arr[n - i - 1] = temp;
+        }
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size of array: ");
+        int size = sc.nextInt();
+        int[] arr = new int[size];
+
+        System.out.println("Enter " + size + " elements:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        SelectionSort.dualSelectionSort(arr);
+
+        System.out.println("Sorted array:");
+        for (int i = 0; i < size; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+        
+    }
+}
+
+//binary search
+//binary search to find the leftmost and rightmost position 
+
+import java.util.*;
+
+class BinarySearchOccurrence {
+    public static int findFirstOccurrence(int arr[], int target) {
+        int low = 0, high = arr.length - 1, result = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == target) {
+                result = mid;   
+                high = mid - 1; 
+            } else if (arr[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return result;
+    }
+
+    public static int findLastOccurrence(int arr[], int target) {
+        int low = 0, high = arr.length - 1, result = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == target) {
+                result = mid;  
+                low = mid + 1;  
+            } else if (arr[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return result;
+    }
+}
+
+public class Main { 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int size = sc.nextInt();
+
+        int[] arr = new int[size];
+
+        System.out.println("Enter " + size + " sorted elements:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter the target element: ");
+        int target = sc.nextInt();
+
+        int leftIndex = BinarySearchOccurrence.findFirstOccurrence(arr, target);
+        int rightIndex = BinarySearchOccurrence.findLastOccurrence(arr, target);
+
+        System.out.println("[" + leftIndex + ", " + rightIndex + "]");
+
+       
+    }
+}
+
+
+//array size n-1 containing 1 to n, find the missing
+
+import java.util.*;
+
+class BinarySearch {
+    public static int findFirst(int arr[], int size) {
+        for (int i = 0; i < size - 1; i++) {
+            if (arr[i] != i + 1) {
+                return i + 1;  
+            }
+        }
+        return size; 
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array (n): ");
+        int size = sc.nextInt();
+
+        int[] arr = new int[size - 1]; 
+
+        System.out.println("Enter " + (size - 1) + " sorted elements from 1 to " + size + " with one missing:");
+        for (int i = 0; i < size - 1; i++) {  
+            arr[i] = sc.nextInt();
+        }
+
+        int missing = BinarySearch.findFirst(arr, size);  
+        System.out.println("Missing number: " + missing);
+
+    }
+}
+
+//count each word frequency using hashmap and .split
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+     
+        System.out.println("Enter a sentence:");
+        String sentence = sc.nextLine().toLowerCase(); 
+
+        
+        String[] words = sentence.split("\\W+"); 
+
+  
+        HashMap<String, Integer> wordCount = new HashMap<>();
+
+        for (String word : words) {
+            if (!word.isEmpty()) { 
+                wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+            }
+        }
+
+        System.out.println("Word Frequencies:");
+        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
+        
+    }
+}
+
+
+// remove duplicate from list of names using list
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        
+        System.out.print("Enter the number of names: ");
+        int n = sc.nextInt();
+        sc.nextLine(); 
+        List<String> names = new ArrayList<>();
+
+        System.out.println("Enter " + n + " names:");
+        for (int i = 0; i < n; i++) {
+            names.add(sc.nextLine().trim()); 
+        }
+
+     
+        Set<String> uniqueNames = new LinkedHashSet<>(names);
+        System.out.println("\nList after removing duplicates:");
+        for (String name : uniqueNames) {
+            System.out.println(name);
+        }
+
+ 
+    }
+}
+
+
+//sort a list of products by price
+
+import java.util.*;
+import java.util.Collections;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of products: ");
+        int n = sc.nextInt();
+        sc.nextLine(); 
+        List<String> prices = new ArrayList<>();
+
+        System.out.println("Enter " + n + " prices:");
+        for (int i = 0; i < n; i++) {
+            prices.add(sc.nextLine().trim()); 
+        }
+
+        Set<String> sort = new LinkedHashSet<>(prices);
+        System.out.println("\nafter sorting:");
+        
+        Collections.sort(prices);
+        System.out.println(prices);
+    }
+}
+
+//to find the most frequency number in an array
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Read array size
+        System.out.print("Enter the size of the array: ");
+        int size = sc.nextInt();
+        
+        int[] arr = new int[size];
+
+        // Read array elements
+        System.out.println("Enter " + size + " elements:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        // HashMap to store frequencies
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Find most frequent number
+        int mostFrequent = arr[0];
+        int maxCount = 0;
+
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostFrequent = entry.getKey();
+                maxCount = entry.getValue();
+            }
+        }
+
+        // Print result
+        System.out.println("Most frequent number: " + mostFrequent + " (appears " + maxCount + " times)");
+        
+        sc.close();
+    }
+}
+
